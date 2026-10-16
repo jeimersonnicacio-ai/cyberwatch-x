@@ -1,0 +1,209 @@
+.certificate-verification-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 18px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(0, 234, 255, 0.12), transparent 55%),
+    linear-gradient(rgba(0, 229, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.018) 1px, transparent 1px),
+    #01040b;
+  background-size: auto, 32px 32px, 32px 32px;
+  color: #e9fcff;
+}
+
+.verification-card {
+  width: min(720px, 100%);
+  padding: 42px;
+  border: 1px solid rgba(0, 234, 255, 0.38);
+  background: linear-gradient(160deg, rgba(3, 18, 29, 0.98), rgba(1, 8, 15, 0.98));
+  box-shadow: 0 0 45px rgba(0, 234, 255, 0.12);
+  text-align: center;
+}
+
+.verification-brand {
+  color: #6e9faf;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+
+.verification-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 26px;
+  text-align: left;
+}
+
+.verification-form label {
+  color: #6e9faf;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.verification-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  color: #e9fcff;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 1px;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 4px;
+  outline: none;
+  background: #020911;
+}
+
+.verification-form input:focus {
+  border-color: #00eaff;
+  box-shadow: 0 0 16px rgba(0, 234, 255, 0.12);
+}
+
+.verification-form button {
+  justify-self: start;
+  padding: 12px 18px;
+  color: #00eaff;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  border-radius: 4px;
+  background: rgba(0, 234, 255, 0.05);
+  cursor: pointer;
+}
+
+.verification-form button:hover {
+  background: rgba(0, 234, 255, 0.12);
+}
+
+.verification-card h2 {
+  margin: 0;
+  font-size: clamp(22px, 4vw, 32px);
+  letter-spacing: 1px;
+}
+
+.verification-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 18px;
+  padding: 10px 14px;
+  border: 1px solid currentColor;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.verification-status span {
+  font-size: 18px;
+}
+
+.verification-valid {
+  color: #52ff8a;
+  background: rgba(82, 255, 138, 0.05);
+}
+
+.verification-invalid {
+  color: #ff6b7a;
+  background: rgba(255, 107, 122, 0.05);
+}
+
+.verification-kicker {
+  margin: 0 0 8px;
+  color: #00eaff;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.verification-card h1 {
+  margin: 0;
+  font-size: clamp(26px, 5vw, 42px);
+  letter-spacing: 1px;
+}
+
+.verification-description {
+  max-width: 590px;
+  margin: 16px auto 0;
+  color: #a9cbd1;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.verification-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 30px;
+  border: 1px solid rgba(0, 234, 255, 0.16);
+  background: rgba(0, 234, 255, 0.16);
+  text-align: left;
+}
+
+.verification-details > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 16px;
+  background: #020911;
+}
+
+.verification-details span {
+  color: #6e9faf;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.verification-details strong {
+  color: #e9fcff;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.verification-code {
+  margin-top: 26px;
+  padding: 14px;
+  border: 1px solid rgba(255, 107, 122, 0.25);
+  color: #a9cbd1;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.verification-code strong {
+  color: #ff6b7a;
+}
+
+.verification-back {
+  margin-top: 30px;
+  padding: 12px 18px;
+  color: #00eaff;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  border-radius: 4px;
+  background: rgba(0, 234, 255, 0.05);
+  cursor: pointer;
+}
+
+.verification-back:hover {
+  background: rgba(0, 234, 255, 0.12);
+  box-shadow: 0 0 16px rgba(0, 234, 255, 0.2);
+}
+
+@media (max-width: 620px) {
+  .verification-card {
+    padding: 30px 18px;
+  }
+
+  .verification-details {
+    grid-template-columns: 1fr;
+  }
+}
