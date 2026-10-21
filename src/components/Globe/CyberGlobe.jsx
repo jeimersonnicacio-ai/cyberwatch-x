@@ -5,6 +5,7 @@ import Satellites from "./Satellites";
 import RotatingWorld from "./RotatingWorld";
 import Moon from "./Moon";
 import Sun from "./Sun";
+import GlobeAssetErrorBoundary from "./GlobeAssetErrorBoundary";
 
 function LoadingPlanet() {
   return (
@@ -32,11 +33,13 @@ export default function CyberGlobe({ routes }) {
 
         <Sun />
 
-        <Suspense fallback={<LoadingPlanet />}>
-          <RotatingWorld routes={routes} />
-          <Moon />
-          <Satellites />
-        </Suspense>
+        <GlobeAssetErrorBoundary>
+          <Suspense fallback={<LoadingPlanet />}>
+            <RotatingWorld routes={routes} />
+            <Moon />
+            <Satellites />
+          </Suspense>
+        </GlobeAssetErrorBoundary>
 
         <OrbitControls
           enablePan={false}

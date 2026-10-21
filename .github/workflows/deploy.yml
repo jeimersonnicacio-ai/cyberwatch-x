@@ -11,29 +11,44 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Lint (informative, does not block the deploy)
+      - name: Lint (non-blocking)
         run: npm run lint
         continue-on-error: true
 
-      - run: npm run build
+      - name: Build for GitHub Pages
+        run: npm run build
+        env:
+          GITHUB_PAGES: "true"
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Verify required public assets
+        run: |
+          test -f dist/index.html
+          test -f dist/textures/earth/earth_day.jpg
+          test -f dist/textures/earth/earth_clouds.png
+          test -f dist/models/satellites/satellite.glb
+          echo "Build and public assets verified."
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -44,5 +59,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

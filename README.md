@@ -62,7 +62,7 @@ Ao concluir os 8 módulos, o aluno emite o certificado, com ID único no formato
 
 ## Publicação no GitHub Pages
 
-O repositório inclui `.github/workflows/deploy.yml`. Depois de enviar o projeto para a branch `main`, abra **Settings → Pages → Source: GitHub Actions**. O build e a publicação passam a ser automáticos a cada push. O Vite usa `base: "./"`, então funciona em `https://usuario.github.io/repositorio/`.
+O repositório inclui `.github/workflows/deploy.yml`. Em **Settings → Pages → Build and deployment → Source**, selecione **GitHub Actions** (não “Deploy from a branch”). Isso evita que a publicação automática por branch concorra com o workflow que compila o React/Vite. O workflow define `GITHUB_PAGES=true`, usa a base `/cyberwatch-x/` e verifica se as texturas e o modelo 3D estão em `dist/` antes de publicar. Para executar localmente, use `npm run dev`; a base relativa continua funcionando no ambiente local.
 
 ## Estrutura
 
