@@ -3,15 +3,16 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
+// BASE_URL keeps public assets working both locally and under GitHub Pages
+// when the project is served from /cyberwatch-x/ instead of the domain root.
+const CLOUDS_TEXTURE_URL = `${import.meta.env.BASE_URL}textures/earth/earth_clouds.png`;
+
 export default function Clouds() {
   const cloudsRef = useRef();
 
-  const cloudsTexture = useTexture(
-    "/textures/earth/earth_clouds.png",
-    (texture) => {
-      texture.colorSpace = THREE.SRGBColorSpace;
-    },
-  );
+  const cloudsTexture = useTexture(CLOUDS_TEXTURE_URL, (texture) => {
+    texture.colorSpace = THREE.SRGBColorSpace;
+  });
 
   useFrame((_, delta) => {
     if (cloudsRef.current) {

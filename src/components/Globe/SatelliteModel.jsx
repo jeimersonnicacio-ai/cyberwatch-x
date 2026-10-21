@@ -1,15 +1,13 @@
 import { useGLTF } from "@react-three/drei";
 
-export default function SatelliteModel(props) {
-  const { scene } = useGLTF("/models/satellites/satellite.glb");
+// BASE_URL keeps public assets working both locally and under GitHub Pages
+// when the project is served from /cyberwatch-x/ instead of the domain root.
+const SATELLITE_MODEL_URL = `${import.meta.env.BASE_URL}models/satellites/satellite.glb`;
 
-  return (
-    <primitive
-      object={scene}
-      scale={0.08}
-      {...props}
-    />
-  );
+export default function SatelliteModel(props) {
+  const { scene } = useGLTF(SATELLITE_MODEL_URL);
+
+  return <primitive object={scene} scale={0.08} {...props} />;
 }
 
-useGLTF.preload("/models/satellites/satellite.glb");
+useGLTF.preload(SATELLITE_MODEL_URL);
